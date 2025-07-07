@@ -4,11 +4,17 @@ This guide is to improve the KDE Plasma experience on X11. It particularly appli
 
 This is a crucial step. XLibre and xorg-git contain the "TearFree" feature for modesetting, which is not available in the standard releases. If you use a driver other than modesetting, check that the TearFree option exists for your driver.
 
-Installation depends on the distribution you use. On Arch Linux and derivatives ...
+Installation depends on the distribution you use. On Arch Linux and derivatives:
+
+Xorg-git:
 
 ```
 sudo yay -S xorg-server-git xorg-server-devel-git xorg-server-common-git xorgproto-git
 sudo yay -S xf86-input-libinput-git 
 ```
 
-... to be completed ...
+Xlibre:
+
+see the pinned comment [here](https://aur.archlinux.org/packages/xlibre-server)
+
+
