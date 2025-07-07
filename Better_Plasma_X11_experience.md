@@ -25,12 +25,26 @@ Creates a file called ```/etc/X11/xorg.conf.d/20-modesetting.conf``` with this c
 
 ```
 Section "Device"
-    Identifier  "Intel Graphics"
-    Driver      "modesetting"
-    Option 	    "ShadowFB" "false"
-    Option      "Atomic" "true" #only effective on Xlibre, or Xorg-git with a special patch (see below)
-    Option      "TearFree" "true"
+    Identifier    "My GPU Name"
+    Driver        "modesetting"
+    Option        "ShadowFB" "false"
+    Option        "Atomic" "true" #only effective on Xlibre, or Xorg-git with a special patch (see below)
+    Option        "TearFree" "true"
 EndSection
 ```
 
-... TO BE COMPLETED ...
+## 2. DMABUF
+
+Creates a file called ```/etc/X11/xorg.conf.d/15-dmabuf.conf``` with this content
+
+```
+Section "ServerFlags"
+	Option "Debug" "dmabuf_capable"
+EndSection
+```
+
+# Konfiguring KDE/KWIN
+
+*** To BE DONE ***
+
+
