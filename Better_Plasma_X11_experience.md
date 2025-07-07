@@ -6,15 +6,29 @@ This is a crucial step. XLibre and xorg-git contain the "TearFree" feature for m
 
 Installation depends on the distribution you use. On Arch Linux and derivatives:
 
-Xorg-git:
+**Xorg-git:**
 
 ```
 sudo yay -S xorg-server-git xorg-server-devel-git xorg-server-common-git xorgproto-git
 sudo yay -S xf86-input-libinput-git 
 ```
 
-Xlibre:
+**Xlibre:**
 
 see the pinned comment [here](https://aur.archlinux.org/packages/xlibre-server)
 
+# Configuring Xorg
 
+## 1. Modesetting options
+
+Crea un file chiamato ```/etc/X11/xorg.conf.d/20-modesetting.conf``` con questo contenuto
+
+```
+Section "Device"
+    Identifier  "Intel Graphics"
+    Driver      "modesetting"
+    Option 	    "ShadowFB" "false"
+    # Option      "Atomic" "true" 
+    Option      "TearFree" "true"
+EndSection
+```
