@@ -6,5 +6,9 @@ This is a crucial step. XLibre and xorg-git contain the "TearFree" feature for m
 
 Installation depends on the distribution you use. On Arch Linux and derivatives ...
 
+```
 sudo yay -S xorg-server-git xorg-server-devel-git xorg-server-common-git
 sudo yay -S xf86-input-libinput-git 
+```
+
+... to be completed ...
