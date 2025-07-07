@@ -21,14 +21,16 @@ see the pinned comment [here](https://aur.archlinux.org/packages/xlibre-server)
 
 ## 1. Modesetting options
 
-Crea un file chiamato ```/etc/X11/xorg.conf.d/20-modesetting.conf``` con questo contenuto
+Creates a file called ```/etc/X11/xorg.conf.d/20-modesetting.conf``` with this content
 
 ```
 Section "Device"
     Identifier  "Intel Graphics"
     Driver      "modesetting"
     Option 	    "ShadowFB" "false"
-    # Option      "Atomic" "true" 
+    Option      "Atomic" "true" #only effective on Xlibre, or Xorg-git with a special patch (see below)
     Option      "TearFree" "true"
 EndSection
 ```
+
+... TO BE COMPLETED ...
