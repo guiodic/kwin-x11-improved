@@ -27,8 +27,8 @@ Creates a file called ```/etc/X11/xorg.conf.d/20-modesetting.conf``` with this c
 Section "Device"
     Identifier    "My GPU Name"
     Driver        "modesetting"
-    Option        "ShadowFB" "false"
-    Option        "Atomic" "true" #only effective on Xlibre, or Xorg-git with a special patch (see below)
+    Option        "ShadowFB" "false" 
+    Option        "Atomic" "true" #only effective on Xlibre, or Xorg-git with a special patch
     Option        "TearFree" "true"
 EndSection
 ```
@@ -45,6 +45,40 @@ EndSection
 
 # Konfiguring KDE/KWIN
 
-*** To BE DONE ***
+Now that we have activated TearFree, the X11 server will take care of the tearing, so we can deactivate Kwin's functions in this regard.
+
+Let's create a file
+
+```kate /home/$USER/.config/plasma-workspace/env/kwin_env.sh```
+
+with this content:
+
+```
+export KWIN_PERSISTENT_VBO=1 #???
+export KWIN_USE_BUFFER_AGE=1 #default
+export KWIN_EXPLICIT_SYNC=0 
+export KWIN_X11_NO_SYNC_TO_VBLANK=1
+export KWIN_USE_INTEL_SWAP_EVENT=1 #not default, should be relevant only on glx
+```
+
+Let's make the file executable with
+
+```chmod +x /home/$USER/.config/plasma-workspace/env/kwin_env.sh```
+
+Ora dobbiamo disattivare la sincronizzasione di Qucik Scene Graph (una funzione delle librerie QT) ma solo per Kwin, non per il resto del sistema, poiché per plasmashell e altre parti del sistema forma utile.
+
+```
+sudo mkdir /etc/systemd/user/plasma-kwin_x11.service.d/
+kate /etc/systemd/user/plasma-kwin_x11.service.d/10-kwin_smoother.conf
+```
+
+Nel file inseriamo:
+
+```
+[Service]
+Environment="QSG_NO_VSINK=1"
+```
+
+**TO BE CONTINUED**
 
 
