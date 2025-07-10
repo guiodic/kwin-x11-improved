@@ -68,8 +68,7 @@ Now let's disable the synchronisation of Qucik Scene Graph (a function of the QT
 
 ```sudo mkdir /etc/systemd/user/plasma-kwin_x11.service.d/```
 
-Create a file ```/etc/systemd/user/plasma-kwin_x11.service.d/10-kwin_smoother.conf
-```
+Create a file ```/etc/systemd/user/plasma-kwin_x11.service.d/10-kwin_smoother.conf```
 
 With this content
 
