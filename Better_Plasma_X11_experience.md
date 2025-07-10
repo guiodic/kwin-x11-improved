@@ -47,9 +47,7 @@ EndSection
 
 Now that we have activated TearFree, the X11 server will take care of the tearing, so we can deactivate Kwin's functions in this regard.
 
-Let's create a file
-
-```kate /home/$USER/.config/plasma-workspace/env/kwin_env.sh```
+Let's create a file ```/home/$USER/.config/plasma-workspace/env/kwin_env.sh```
 
 with this content:
 
@@ -67,18 +65,37 @@ Let's make the file executable with
 
 Now let's disable the synchronisation of Qucik Scene Graph (a function of the QT libraries) but only for Kwin, not for the rest of the system, since for plasmashell and other parts of the system it is useful.
 
-```
-sudo mkdir /etc/systemd/user/plasma-kwin_x11.service.d/
-kate /etc/systemd/user/plasma-kwin_x11.service.d/10-kwin_smoother.conf
+
+```sudo mkdir /etc/systemd/user/plasma-kwin_x11.service.d/```
+
+Create a file ```/etc/systemd/user/plasma-kwin_x11.service.d/10-kwin_smoother.conf
 ```
 
-Let's write  this in the file opened with kate
+With this content
 
 ```
 [Service]
 Environment="QSG_NO_VSINK=1"
 ```
 
-**TO BE CONTINUED**
+# Using EGL insted of glx
+
+QT and Kwin work better using the EGL interface instead of the traditional GLX.
+
+Create a file ```/etc/profile.d/egl.sh```
+
+with this content:
+
+```
+export QT_XCB_GL_INTEGRATION=xcb_egl
+export KWIN_OPENGL_INTERFACE=egl
+export GST_GL_PLATFORM=egl #this is not related to kwin, but it's useful
+```
+
+
+However, you may encounter some bugs with Libreoffice's OpenGL alimations. In this case you can modify the Impress launcher to use glx instead of EGL.
+
+In the Envoroment variable: ```QT_XCB_GL_INTEGRATION=xcb_glx```
+
 
 
