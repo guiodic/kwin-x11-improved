@@ -65,14 +65,14 @@ Let's make the file executable with
 
 ```chmod +x /home/$USER/.config/plasma-workspace/env/kwin_env.sh```
 
-Ora dobbiamo disattivare la sincronizzasione di Qucik Scene Graph (una funzione delle librerie QT) ma solo per Kwin, non per il resto del sistema, poiché per plasmashell e altre parti del sistema forma utile.
+Now let's disable the synchronisation of Qucik Scene Graph (a function of the QT libraries) but only for Kwin, not for the rest of the system, since for plasmashell and other parts of the system it is useful.
 
 ```
 sudo mkdir /etc/systemd/user/plasma-kwin_x11.service.d/
 kate /etc/systemd/user/plasma-kwin_x11.service.d/10-kwin_smoother.conf
 ```
 
-Nel file inseriamo:
+Let's write  this in the file opened with kate
 
 ```
 [Service]
