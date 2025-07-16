@@ -1,0 +1,31 @@
+From 4bc06ef546b2816dff0a764833c05cd4e7b55595 Mon Sep 17 00:00:00 2001
+From: Tsic Liu <tsic@tsic.top>
+Date: Wed, 9 Jul 2025 16:15:51 +0800
+Subject: [PATCH] Filter out disconnected outputs in X11 backend
+
+Modified output filtering logic in X11StandaloneBackend to exclude
+outputs that are not in connected state. Added check for
+XCB_RANDR_CONNECTION_CONNECTED status along with
+existing CRTC check.
+
+(cherry picked from commit 1329cf4943d7f85345537158242fcab324b858f7)
+---
+ src/backends/x11/standalone/x11_standalone_backend.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/backends/x11/standalone/x11_standalone_backend.cpp b/src/backends/x11/standalone/x11_standalone_backend.cpp
+index c7ff60ecde..82baf4c0a3 100644
+--- a/src/backends/x11/standalone/x11_standalone_backend.cpp
++++ b/src/backends/x11/standalone/x11_standalone_backend.cpp
+@@ -321,7 +321,7 @@ void X11StandaloneBackend::doUpdateOutputs()
+ 
+                 for (auto xcbOutput : std::span(info.outputs(), info->num_outputs)) {
+                     Xcb::RandR::OutputInfo outputInfo(xcbOutput, resources->config_timestamp);
+-                    if (outputInfo->crtc != crtc) {
++                    if (outputInfo->crtc != crtc || outputInfo->connection != XCB_RANDR_CONNECTION_CONNECTED) {
+                         continue;
+                     }
+ 
+-- 
+GitLab
+

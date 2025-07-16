@@ -71,10 +71,13 @@ makedepends=(extra-cmake-modules
              wayland-protocols)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig}
-        0001-tiles-editor-improvement.patch)
-sha256sums=('6edfb204a1ab9af991bf057ae376c12595170d591d0801674bba64148d452c23'
+        0001-tiles-editor-improvement.patch
+        0002-randr-filter.patch)
+sha256sums=('SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'SKIP'
+            )
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
@@ -84,6 +87,7 @@ validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell
 prepare() {
   cd $pkgname-$pkgver
   git apply ../0001-tiles-editor-improvement.patch
+  git apply ../0002-randr-filter.patch
 }
               
 build() {
