@@ -2402,10 +2402,9 @@ index 7809830272c..e8d89166da6 100644
  }
  
 diff --git a/src/workspace.cpp b/src/workspace.cpp
-index 8ae3e9b71c7..f867b4bef47 100644
 --- a/src/workspace.cpp
 +++ b/src/workspace.cpp
-@@ -902,6 +902,21 @@ void Workspace::slotCurrentDesktopChanged(VirtualDesktop *oldDesktop, VirtualDes
+@@ -1033,5 +1033,20 @@ void Workspace::updateWindowVisibilityAndActivateOnDesktopChange(VirtualDesktop *newDesktop)
      // Restore the focus on this desktop
      --block_focus;
  
@@ -2425,7 +2424,6 @@ index 8ae3e9b71c7..f867b4bef47 100644
 +    }
 +
      activateWindowOnDesktop(newDesktop);
-     Q_EMIT currentDesktopChanged(oldDesktop, m_moveResizeWindow);
  }
 -- 
 GitLab
