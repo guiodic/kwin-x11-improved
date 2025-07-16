@@ -1,3 +1,3 @@
-For Arch GNU/Linux and its derivatives.
+This package is part of the `plasma` suite, and is managed by the scripts at https://gitlab.archlinux.org/archlinux/kde-build.
 
-How to: Download the whole repo. Then install the binary OR makepkg -srci 
+Do not upgrade this package individually, or make any format changes to the PKGBUILD without checking with the KDE package maintainers first.
