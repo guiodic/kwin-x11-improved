@@ -65,7 +65,7 @@ Let's make the file executable with
 
 ```chmod +x /home/$USER/.config/plasma-workspace/env/kwin_env.sh```
 
-Now let's disable the synchronisation of Qucik Scene Graph (a function of the QT libraries) but only for Kwin, not for the rest of the system, since for plasmashell and other parts of the system it is useful.
+Now let's disable the synchronisation of Quick Scene Graph (a function of the QT libraries) but only for Kwin, not for the rest of the system, since for plasmashell and other parts of the system it is useful.
 
 
 ```sudo mkdir /etc/systemd/user/plasma-kwin_x11.service.d/```
@@ -141,12 +141,13 @@ options i915 enable_guc=3 enable_fbc=1 nuclear_pageflip=1 enable_dmc_wl=1
 export ANV_DEBUG=video-decode,video-encode
 ```
 
-## MESA and OPENCL triks
+## MESA and OPENCL tricks
+
+/etc/profile.d/mesa.sh (must be executable)
 
 ```
 export INTEL_COMPUTE_CLASS=1
 export VAAPI_MPEG4_ENABLED=1
-export __GL_THREADED_OPTIMIZATIONS=1 #for nvidia
 export mesa_glthread=true
 #export INTEL_SIMD_DEBUG=fs2x8 # (uncomment for Intel Xe2 or newer)
 ```
