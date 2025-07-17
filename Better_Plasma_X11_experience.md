@@ -101,6 +101,12 @@ However, you may encounter some bugs with Libreoffice's OpenGL alimations. In th
 
 In the Envoroment variable: ```QT_XCB_GL_INTEGRATION=xcb_glx```
 
+# Suggested installations
+
+```sudo yay -S material-kwin-decoration-git # for Locally integrated menu```
+
+kwin-x11 with backports: https://github.com/guiodic/kwin-x11-improved
+
 # Other stuff
 
 ## My /etc/modprobe.d/i915.conf
