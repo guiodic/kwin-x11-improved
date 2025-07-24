@@ -16,7 +16,7 @@ Here are the reasons:
 
 4. Chromium still has numerous problems under Wayland such as drag&drop not always working.
 
-5. Of course, one cannot forget the problem of restoring windows in the position in which they were closed the last time, which will probably take many more years to solve. A very basic feature still lacking in Wayland.
+5. Of course, one cannot forget the problem of restoring windows in the position in which they were closed the last time, especially between different sessions, which will probably take many more years to solve. A very basic feature still lacking in Wayland.
 
 6. After that there are minor annoyances (unreliable thumbnails in Plasma, among them), but which still make the overall experience disappointing.
 
