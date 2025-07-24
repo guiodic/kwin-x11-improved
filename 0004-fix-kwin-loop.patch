@@ -1,0 +1,76 @@
+--- a/src/backends/x11/standalone/x11_standalone_backend.h	
++++ b/src/backends/x11/standalone/x11_standalone_backend.h	
+@@ -15,12 +15,14 @@
+ #include <kwin_export.h>
+ 
+ #include <QObject>
++#include <QString>
+ 
+ #include <memory>
+ 
+ #include <X11/Xlib-xcb.h>
+ #include <fixx11h.h>
+ 
++
+ namespace KWin
+ {
+ class RenderLoop;
+@@ -90,6 +92,8 @@
+     void doUpdateOutputs();
+     void updateRefreshRate();
+     void updateCursor();
++    
++    QString m_lastOutputConfigString;
+ 
+ #if HAVE_X11_XINPUT
+     std::unique_ptr<XInputIntegration> m_xinputIntegration;
+     
+     
+--- a/src/backends/x11/standalone/x11_standalone_backend.cpp	
++++ b/src/backends/x11/standalone/x11_standalone_backend.cpp	
+@@ -47,6 +47,8 @@
+ #include <QThread>
+ #include <private/qtx11extras_p.h>
+ 
++#include <QString>
++
+ #include <span>
+ 
+ namespace KWin
+@@ -289,6 +291,8 @@
+     if (Xcb::Extensions::self()->isRandrAvailable()) {
+         T resources(rootWindow());
+         if (!resources.isNull()) {
++            
++            QString currentConfig;            
+ 
+             std::span crtcs(resources.crtcs(), resources->num_crtcs);
+             for (auto crtc : crtcs) {
+@@ -298,6 +302,14 @@
+                 if (!geometry.isValid()) {
+                     continue;
+                 }
++                
++                //save current config
++                currentConfig += QString::number(geometry.x()) + "," +
++                     QString::number(geometry.y()) + "," +
++                     QString::number(geometry.width()) + "," +
++                     QString::number(geometry.height()) + "," +
++                     QString::number(info->mode) + "," +
++                     QString::number(info->rotation) + ";";
+ 
+                 float refreshRate = -1.0f;
+ 
+@@ -388,6 +400,12 @@
+                     break;
+                 }
+             }
++            
++            if (currentConfig == m_lastOutputConfigString) {
++                  qCDebug(KWIN_X11STANDALONE) << "Skipping updateOutputs() because configuration is unchanged";
++                  return;
++            }
++            m_lastOutputConfigString = currentConfig;
+         }
+     }
+ 
