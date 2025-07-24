@@ -1,4 +1,4 @@
-# kwin_x11 with ports from kwin-wayland, bug fixes, and maybe other improvements. 
+# kwin_x11 with ports from kwin-wayland, bug fixes, and maybe other improvements
 
 Patches, PKGBUILD and binary.
 
