@@ -1,3 +1,6 @@
+# This project is archived. Please use this other one: [https://github.com/josephcrowell/kwin-x11-improved](https://github.com/josephcrowell/kwin-x11-improved)
+
+
 # kwin_x11 with ports from kwin-wayland, bug fixes, and maybe other improvements
 
 Patches, PKGBUILD and binary.
