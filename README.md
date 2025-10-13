@@ -1,4 +1,4 @@
-# This project is archived. Please use this other one: [https://github.com/josephcrowell/kwin-x11-improved](https://github.com/josephcrowell/kwin-x11-improved)
+# This project is archived. Please use this other one: [KWIN-X11-LITE](https://github.com/KDE-Lite/kwin-x11-lite)
 
 
 # kwin_x11 with ports from kwin-wayland, bug fixes, and maybe other improvements
